@@ -1,14 +1,31 @@
 "use client"
 import { useState } from "react";
-import Rating from '@mui/material/Rating';
-import Button from '@mui/material/Button';
-import Skeleton from '@mui/material/Skeleton';
-import {BsArrowUpCircleFill} from "react-icons/bs";
-import {AiOutlineStar} from "react-icons/ai";
+import TextField from '@mui/material/TextField';
+import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
+import SearchItem from "@/component/searchItem/SearchItem";
 
 export default function Home() {
 
-	const [value, setValue] = useState<string>('Input')
+	const [value, setValue] = useState<string>('');
+	const [addCategory, setAddCategory] = useState<boolean>(false);
+	const [visibleCategory, setVisibleCategory] = useState<boolean>(false);
+
+	const heandleBlur = () => {
+		if(value){
+			setAddCategory(true);
+		}else{
+			setAddCategory(false);
+		}
+
+		setVisibleCategory(false);
+	}
+
+	const setValueCategory = (e:any):void => {
+		if(e.target.dataset.text){
+			setValue(e.target.dataset.text);
+			setAddCategory(true);
+		}
+	}
 
   return (
     <div className="content">
@@ -22,127 +39,43 @@ export default function Home() {
 			</div>
 
 			<div className="input-box">
-				<input value={value} onChange={e => (setValue(e.target.value))}/>
+				<TextField 
+					onFocus={() => setVisibleCategory(true)}
+					onBlur={heandleBlur}
+					sx={{flexGrow:1}}
+					label="Search" 
+					variant="outlined" 
+					value={value} 
+					onChange={e => (setValue(e.target.value))}
+					placeholder="Search..."
+				/>
 				<div className="control">
-					<span>prepared</span>
-					<span></span>
+					{addCategory 
+						?
+						<BsDashCircle size={"24px"} />
+						:
+						<BsPlusCircle size={"24px"} />
+					}
 				</div>
+				{visibleCategory &&
+					<div
+						onClick={e => setValueCategory(e)} 
+						className="category-box"
+					>
+						<span data-text="Playstation">Playstation</span>
+						<span data-text="XBox">XBox</span>
+						<span data-text="Windows">Windows</span>
+						<span data-text="Linux">Linux</span>
+						<span data-text="MacOs">MacOs</span>
+					</div>
+				}
 			</div>
 
 			<div className="item-container">
-
-				<div className="item-box">
-					<div className="image-box">
-						<Skeleton
-							sx={{position:"absolute", top:0, left:0}} 
-							variant="rectangular" 
-							width={71} 
-							height={91} />
-						<span className="star-box">
-							<AiOutlineStar color="#faaf00" />
-						</span>
-					</div>
-					<div className="item-caption">
-						<p>xbox game pass 1 year </p>
-						<h4>Seller: Groovy</h4>
-					</div>
-					<div className="item-control">
-						<h4>&#36; 39.29</h4>
-						<div className="raiting-box">
-							<Rating name="size-small" defaultValue={3} size="small" />
-							<h6>1987 reviews</h6>
-						</div>
-						<Button variant="contained" size="small">
-						<BsArrowUpCircleFill size={"16px"}/>	
-						<span style={{position:"relative", left:"2px", top:"1px"}}>Add</span>
-						</Button>
-					</div>
-				</div>
-
-				<div className="item-box">
-					<div className="image-box">
-						<Skeleton
-							sx={{position:"absolute", top:0, left:0}} 
-							variant="rectangular" 
-							width={71} 
-							height={91} />
-						<span className="star-box">
-							<AiOutlineStar color="#faaf00" />
-						</span>
-					</div>
-					<div className="item-caption">
-						<p>xbox game pass 1 year for simple country vpn  mmchange best quality ever key </p>
-						<h4>Seller: Groovy</h4>
-					</div>
-					<div className="item-control">
-						<h4>&#36; 39.29</h4>
-						<div className="raiting-box">
-							<Rating name="size-small" defaultValue={3} size="small" />
-							<h6>1987 reviews</h6>
-						</div>
-						<Button variant="contained" size="small">
-						<BsArrowUpCircleFill size={"16px"}/>	
-						<span style={{position:"relative", left:"2px", top:"1px"}}>Add</span>
-						</Button>
-					</div>
-				</div>
-
-				<div className="item-box">
-					<div className="image-box">
-						<Skeleton
-							sx={{position:"absolute", top:0, left:0}} 
-							variant="rectangular" 
-							width={71} 
-							height={91} />
-						<span className="star-box">
-							<AiOutlineStar color="#faaf00" />
-						</span>
-					</div>
-					<div className="item-caption">
-						<p>xbox game pass 1 year </p>
-						<h4>Seller: Groovy</h4>
-					</div>
-					<div className="item-control">
-						<h4>&#36; 39.29</h4>
-						<div className="raiting-box">
-							<Rating name="size-small" defaultValue={3} size="small" />
-							<h6>1987 reviews</h6>
-						</div>
-						<Button variant="contained" size="small">
-						<BsArrowUpCircleFill size={"16px"}/>	
-						<span style={{position:"relative", left:"2px", top:"1px"}}>Add</span>
-						</Button>
-					</div>
-				</div>
-
-				<div className="item-box">
-					<div className="image-box">
-						<Skeleton
-							sx={{position:"absolute", top:0, left:0}} 
-							variant="rectangular" 
-							width={71} 
-							height={91} />
-						<span className="star-box">
-							<AiOutlineStar color="#faaf00" />
-						</span>
-					</div>
-					<div className="item-caption">
-						<p>xbox game pass 1 year </p>
-						<h4>Seller: Groovy</h4>
-					</div>
-					<div className="item-control">
-						<h4>&#36; 39.29</h4>
-						<div className="raiting-box">
-							<Rating name="size-small" defaultValue={3} size="small" />
-							<h6>1987 reviews</h6>
-						</div>
-						<Button variant="contained" size="small">
-						<BsArrowUpCircleFill size={"16px"}/>	
-						<span style={{position:"relative", left:"2px", top:"1px"}}>Add</span>
-						</Button>
-					</div>
-				</div>
-
+				<SearchItem />
+				<SearchItem />
+				<SearchItem />
+				<SearchItem />
 			</div>
 
 		</div>

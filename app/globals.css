@@ -65,23 +65,33 @@ body{
 	align-items: center;
 	margin-top: 16px;
 	border-radius: 8px;
-	padding: 10px 15px;
-	border: 2px solid  #004AD7;
+	position: relative;
 }
 
-.input-box > input{
-	flex-grow: 1;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 24px;
-	border: none;
-	outline:none;
-}
-
-.control{
+.input-box > .category-box{
+	width: 100%;
 	display: flex;
-	gap: 15px;
+	flex-direction: column;
+	row-gap: 10px;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 2px 2px 4px rgba(0,0,0,.1);
+	background: #fff;
+	position: absolute;
+	top:60px;
+	left: 0;
+	z-index: 1000;
+}
+
+.input-box > .category-box > span:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.input-box > .control{
+	position: absolute;
+	top: 15px;
+  right: 10px;
 }
 
 .control > span:first-child{
@@ -129,6 +139,7 @@ body{
 	position: absolute;
 	bottom: -10px;
 	right: -10px;
+	cursor: pointer;
 }
 
 .item-box > .item-caption{
@@ -173,8 +184,7 @@ body{
 }
 
 .raiting-box{
-	padding: 2px 5px;
-	background: rgba(116, 116, 128, 0.08)
+	text-align: right;
 }
 
 .raiting-box > h6{
