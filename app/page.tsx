@@ -7,23 +7,18 @@ import SearchItem from "@/component/searchItem/SearchItem";
 export default function Home() {
 
 	const [value, setValue] = useState<string>('');
-	const [addCategory, setAddCategory] = useState<boolean>(false);
 	const [visibleCategory, setVisibleCategory] = useState<boolean>(false);
-
-	const heandleBlur = () => {
-		if(value){
-			setAddCategory(true);
-		}else{
-			setAddCategory(false);
-		}
-
-		setVisibleCategory(false);
+	
+	const heandleBlur = () => {	
+		setTimeout(() => {
+			setVisibleCategory(false);
+		}, 200);
 	}
 
 	const setValueCategory = (e:any):void => {
+		console.log('click');
 		if(e.target.dataset.text){
 			setValue(e.target.dataset.text);
-			setAddCategory(true);
 		}
 	}
 
@@ -49,8 +44,8 @@ export default function Home() {
 					onChange={e => (setValue(e.target.value))}
 					placeholder="Search..."
 				/>
-				<div className="control">
-					{addCategory 
+				<div className="control" onClick={() => setValue('')}>
+					{value
 						?
 						<BsDashCircle size={"24px"} />
 						:
@@ -59,7 +54,7 @@ export default function Home() {
 				</div>
 				{visibleCategory &&
 					<div
-						onClick={e => setValueCategory(e)} 
+						onClick={e => setValueCategory(e)}
 						className="category-box"
 					>
 						<span data-text="Playstation">Playstation</span>
@@ -72,6 +67,11 @@ export default function Home() {
 			</div>
 
 			<div className="item-container">
+				<SearchItem />
+				<SearchItem />
+				<SearchItem />
+				<SearchItem />
+				<SearchItem />
 				<SearchItem />
 				<SearchItem />
 				<SearchItem />
