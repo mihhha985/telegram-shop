@@ -35,8 +35,8 @@ export default function Home() {
 
 			<div className="input-box">
 				<TextField 
-					onFocus={() => setVisibleCategory(true)}
-					onBlur={heandleBlur}
+					//onFocus={() => setVisibleCategory(true)}
+					//onBlur={heandleBlur}
 					sx={{flexGrow:1}}
 					label="Search" 
 					variant="outlined" 
@@ -44,8 +44,11 @@ export default function Home() {
 					onChange={e => (setValue(e.target.value))}
 					placeholder="Search..."
 				/>
-				<div className="control" onClick={() => setValue('')}>
-					{value
+				<div 
+					className="control" 
+					onClick={() => setVisibleCategory(prev => !prev)}
+				>
+					{visibleCategory
 						?
 						<BsDashCircle size={"24px"} />
 						:
