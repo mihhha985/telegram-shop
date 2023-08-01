@@ -1,18 +1,19 @@
 "use client"
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
 import {AiOutlineStar, AiTwotoneStar} from "react-icons/ai";
 import {BsPlusCircleFill, BsDashCircleFill} from "react-icons/bs";
+import styles from "./SearchItem.module.css";
 
 function SearchItem() {
 	const [favorite, setFavorite] = useState<boolean>(true);
 	const [checked, setChecked] = useState<boolean>(false);
 	
 	return ( 
-		<div className="item-box">
-					<div className="image-box">
+		<div className={styles.itemBox}>
+					<div className={styles.imageBox}>
 						<Skeleton
 							sx={{position:"absolute", top:0, left:0}} 
 							variant="rectangular" 
@@ -21,7 +22,7 @@ function SearchItem() {
 						/>
 						<span
 							onClick={() => setFavorite(prev => !prev)} 
-							className="star-box">
+							className={styles.starBox}>
 							{favorite 
 								?
 								<AiOutlineStar color="#faaf00" />
@@ -30,11 +31,11 @@ function SearchItem() {
 							}
 						</span>
 					</div>
-					<div className="item-caption">
+					<div className={styles.itemCaption}>
 						<p>xbox game pass 1 year </p>
 						<h4>Seller: Groovy</h4>
 					</div>
-					<div className="item-control">
+					<div className={styles.itemControl}>
 						<h4>&#36; 39.29</h4>
 						<div className="raiting-box">
 							<Rating name="size-small" defaultValue={3} size="small" />

@@ -1,0 +1,72 @@
+.itemBox{
+	display: flex;
+	border-bottom: 1px solid var(--border-color);
+	padding:10px 10px 10px 0;
+	gap: 10px;
+}
+
+.itemBox > .imageBox{
+	position: relative;
+	width: 71px;
+	height: 91px;
+	flex-shrink: 0;
+}
+
+.imageBox > .starBox{
+	padding: 5px;
+	background: #fff;
+	position: absolute;
+	bottom: -10px;
+	right: -10px;
+	cursor: pointer;
+}
+
+.itemBox > .itemCaption{
+	flex-grow: 1;
+}
+
+.itemBox > .itemCaption > p{
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px; /* 129.412% */
+	letter-spacing: -0.442px;
+	margin: 0;
+}
+
+.itemBox > .itemCaption > h4{
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: -0.442px;
+	color: var(--second-text-color);
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+
+.itemControl{
+	display: flex;
+	flex-direction: column;
+	row-gap:5px;
+}
+
+.itemControl > h4{
+	text-align: right;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 18px; /* 128.571% */
+	letter-spacing: -0.442px;
+	margin: 0;
+}
+
+.raitingBox{
+	text-align: right;
+}
+
+.raitingBox > h6{
+	color: var(--main-text-color);
+	font-size: 12px;
+	font-weight: 400;
+}

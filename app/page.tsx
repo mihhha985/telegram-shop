@@ -3,17 +3,12 @@ import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 import SearchItem from "@/component/searchItem/SearchItem";
+import styles from "./page.module.css";
 
 export default function Home() {
 
 	const [value, setValue] = useState<string>('');
 	const [visibleCategory, setVisibleCategory] = useState<boolean>(false);
-	
-	const heandleBlur = () => {	
-		setTimeout(() => {
-			setVisibleCategory(false);
-		}, 200);
-	}
 
 	const setValueCategory = (e:any):void => {
 		console.log('click');
@@ -25,18 +20,8 @@ export default function Home() {
   return (
     <div className="content">
 
-			<div className="search">
-				<span className="active">Search</span>
-				<span>Wallet</span>
-				<span>Orders</span>
-				<span>Info</span>
-				<span>Favorites</span>
-			</div>
-
-			<div className="input-box">
+			<div className={styles.inputBox}>
 				<TextField 
-					//onFocus={() => setVisibleCategory(true)}
-					//onBlur={heandleBlur}
 					sx={{flexGrow:1}}
 					label="Search" 
 					variant="outlined" 
@@ -45,20 +30,20 @@ export default function Home() {
 					placeholder="Search..."
 				/>
 				<div 
-					className="control" 
+					className={styles.control}
 					onClick={() => setVisibleCategory(prev => !prev)}
 				>
 					{visibleCategory
 						?
-						<BsDashCircle size={"24px"} />
+						<BsDashCircle size={"24px"} color="#8d8484" />
 						:
-						<BsPlusCircle size={"24px"} />
+						<BsPlusCircle size={"24px"}  color="#8d8484" />
 					}
 				</div>
 				{visibleCategory &&
 					<div
 						onClick={e => setValueCategory(e)}
-						className="category-box"
+						className={styles.categoryBox}
 					>
 						<span data-text="Playstation">Playstation</span>
 						<span data-text="XBox">XBox</span>
@@ -69,7 +54,7 @@ export default function Home() {
 				}
 			</div>
 
-			<div className="item-container">
+			<div className={styles.itemContainer}>
 				<SearchItem />
 				<SearchItem />
 				<SearchItem />
