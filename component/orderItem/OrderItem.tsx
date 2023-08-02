@@ -3,7 +3,7 @@ import Skeleton from '@mui/material/Skeleton';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
-import {typeOrderStatus} from "@/app/orders/page";
+import {typeOrderStatus} from "@/types/orderType";
 import cn from "classnames";
 import styles from "./OrderItem.module.css";
 

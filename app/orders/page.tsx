@@ -1,12 +1,6 @@
 import styles from './page.module.scss';
 import OrderItem from '@/component/orderItem/OrderItem';
-
-export enum typeOrderStatus {
-	"Confirmed" = "Confirmed", 
-	"Not confirmed" = "Not Confirmed", 
-	"Dispute" = "Dispute", 
-	"Closed" = "Closed"
-};
+import {typeOrderStatus} from "@/types/orderType";
 
 function Page() {
 
