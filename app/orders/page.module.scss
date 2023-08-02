@@ -1,0 +1,31 @@
+.orderContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.orderContainer::-webkit-scrollbar-track {
+	border-radius: 8px;
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
+  background-color: #fcfcfc;
+}
+
+.orderContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(116, 116, 128, 0.2);
+	border-radius: 8px;
+}
+
+.orderContainer{
+	width: 100%;
+	height: 600px;
+	overflow-y: scroll;
+	margin-top: 20px;
+	row-gap: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+
+	h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--second-text-color);
+    text-transform: uppercase;
+	}
+}

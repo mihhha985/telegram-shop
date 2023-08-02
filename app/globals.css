@@ -17,12 +17,12 @@ a{
 }
 
 body{
-	background-color: #ccc;
+	background-color: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100vw;
-	height: 100vh;
+	min-width: 390px;
+	min-height: 645px;
 }
 
 .layout{
