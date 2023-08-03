@@ -1,6 +1,7 @@
 "use client";
 import {useState, useRef, RefObject} from "react";
 import Button from '@mui/material/Button';
+import {FaDollarSign} from "react-icons/fa";
 import {BsCurrencyBitcoin, BsArrowUpCircleFill, BsFillPlusCircleFill} from "react-icons/bs";
 import {AiOutlineCopy, AiFillCopy} from "react-icons/ai";
 import TransactionItem from "@/component/transactionItem/TransactionItem";
@@ -11,9 +12,10 @@ function Page() {
 	const [isCopy, setIsCopy] = useState<boolean>(false);
 	const [showToolkit, setShowToolkit] = useState<boolean>(false);
 	const [confirm, setConfirm] = useState<boolean>(true);
+	const [balance, setBalance] = useState<boolean>(true);
 	const addrRef = useRef() as RefObject<HTMLParagraphElement> | null;
 	const heandleClick = () => {
-		const target = document.getElementById('btc-addr') as HTMLParagraphElement;
+		const target = addrRef?.current as HTMLParagraphElement;
 		var rng, sel;
     if (document.createRange) {
       rng = document.createRange();
@@ -42,12 +44,20 @@ function Page() {
 		<div className="content">
 			<div className={styles.walletConfirm}>
 				<h4>Balance</h4>
-				<h3>
-					<span style={{position:"relative", bottom:"6px"}}>0,001</span> 
-					<BsCurrencyBitcoin color="#8d8484"/>
-				</h3>
+				{balance 
+					?
+					<h3 onClick={() => setBalance(false)}>
+						<span style={{position:"relative", bottom:"6px"}}>0,001</span> 
+						<BsCurrencyBitcoin color="#8d8484"/>
+					</h3>
+					:
+					<h3 onClick={() => setBalance(true)}>
+						<span style={{position:"relative", bottom:"6px"}}>32</span> 
+						<FaDollarSign color="#8d8484"/>
+					</h3>
+				}
 				<div className={styles.addrBox}>
-					<p id="btc-addr">bc1pyujgt9zhj8nsjgf5kg3d8tg673<br />0f0lh5mml7s2aeuutu4s7f39s5puyka</p>
+					<p ref={addrRef}>bc1pyujgt9zhj8nsjgf5kg3d8tg673<br />0f0lh5mml7s2aeuutu4s7f39s5puyka</p>
 					{showToolkit && <div className={styles.toolkit}>copied</div>}
 				</div>
 				<h5 onClick={heandleClick}>

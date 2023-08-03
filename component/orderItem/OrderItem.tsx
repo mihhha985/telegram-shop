@@ -29,7 +29,13 @@ function OrderItem({status, text}: {status:typeOrderStatus, text: string}) {
 						}}>1</Box>
 					</Box>
 					<p>{text}</p>
-					<Grid display="flex" flexDirection="column" alignItems="center" justifyContent="center" rowGap="10px">
+					<Grid 
+						display="flex" 
+						flexDirection="column" 
+						alignItems="center" 
+						justifyContent="center" 
+						rowGap="10px" 
+						ml="auto">
 						<span style={{fontSize:"16px", fontWeight:600}}>$39.29</span>
 						<div className={cn(styles.orderStatus, {
 							[styles.orderConfirmed]: status === typeOrderStatus.Confirmed,
