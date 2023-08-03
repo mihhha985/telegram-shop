@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
@@ -7,12 +8,15 @@ import {AiOutlineStar, AiTwotoneStar} from "react-icons/ai";
 import {BsPlusCircleFill, BsDashCircleFill} from "react-icons/bs";
 import styles from "./SearchItem.module.css";
 
-function SearchItem() {
+function SearchItem({id} : {id:number}) {
+	const router = useRouter();
 	const [favorite, setFavorite] = useState<boolean>(true);
 	const [checked, setChecked] = useState<boolean>(false);
 	
 	return ( 
-		<div className={styles.itemBox}>
+		<div 
+			onClick={() => router.push('/product/' + id)}
+			className={styles.itemBox}>
 					<div className={styles.imageBox}>
 						<Skeleton
 							sx={{position:"absolute", top:0, left:0}} 

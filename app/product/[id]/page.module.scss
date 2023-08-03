@@ -1,0 +1,105 @@
+.productContainer{
+	margin-top: 40px;
+
+	.itemBox{
+		display: flex;
+		column-gap: 40px;
+	
+		.imageBox{
+			position: relative;
+			width: 121px;
+			height: 155px;
+			flex-shrink: 0;
+		
+			.starBox{
+				padding: 5px;
+				background: #fff;
+				position: absolute;
+				bottom: -10px;
+				right: -10px;
+				cursor: pointer;
+			}
+		}
+
+		.itemCaption{
+			display: flex;
+			flex-direction: column;
+			row-gap: 8px;
+		
+			 p{
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 22px; /* 129.412% */
+				letter-spacing: -0.442px;
+				margin: 0;
+			}
+
+		 	h4{
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px; /* 128.571% */
+				letter-spacing: -0.442px;
+				color: var(--second-text-color);
+				margin: 0;
+			}
+
+			.raitingBox{
+				text-align: left;
+	
+				h6{
+					color: var(--second-text-color);
+					font-size: 12px;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	.descriptinBox{
+		margin-top: 15px;
+		p{
+			margin-top: 5px;
+			color: var(--second-text-color);
+		}
+	}
+
+	.reviewsBox{
+		position: relative;
+		width: 348px;
+		height: 220px;
+		overflow-x: scroll;
+		margin-top: 5px;
+
+		&.hidden{
+			overflow: hidden!important;
+		}
+
+		&::-webkit-scrollbar {
+			height: 10px;
+		}
+		
+		&::-webkit-scrollbar-track {
+			border-radius: 8px;
+			-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
+			background-color: #fcfcfc;
+		}
+		
+		&::-webkit-scrollbar-thumb {
+			background-color: rgba(116, 116, 128, 0.2);
+			border-radius: 8px;
+		}
+
+		.reviewsContainer{
+			position: absolute;
+			display: flex;
+			column-gap: 20px;
+
+			.croppedText{
+				max-width: 160px;
+			}
+		}
+	}
+
+}

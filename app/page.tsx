@@ -55,15 +55,15 @@ export default function Home() {
 			</div>
 
 			<div className={styles.itemContainer}>
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
-				<SearchItem />
+				<SearchItem id={1}/>
+				<SearchItem id={2}/>
+				<SearchItem id={3}/>
+				<SearchItem id={4}/>
+				<SearchItem id={5}/>
+				<SearchItem id={6}/>
+				<SearchItem id={7}/>
+				<SearchItem id={8}/>
+				<SearchItem id={9}/>
 			</div>
 
 		</div>
