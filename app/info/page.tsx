@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import TopMenu from '@/component/topMenu/TopMenu';
 import {Box, Stack, Card, Typography, Button, TextField} from '@mui/material';
 import {AiOutlineEdit} from "react-icons/ai"
 
@@ -9,6 +10,8 @@ export default function Page() {
 	const [isInput, setIsInput] = useState<boolean>(false);
 
   return (
+		<div className='layout'>
+		<TopMenu />
     <Stack sx={{ width: '100%', mt:"25px" }} spacing={2}>
 			<Box>
 				<Typography
@@ -127,7 +130,7 @@ export default function Page() {
 					</Stack>
 				</Card>
 			</Box>
-
     </Stack>
+		</div>
   );
 }

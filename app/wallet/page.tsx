@@ -5,6 +5,7 @@ import {FaDollarSign} from "react-icons/fa";
 import {BsCurrencyBitcoin, BsArrowUpCircleFill, BsFillPlusCircleFill} from "react-icons/bs";
 import {AiOutlineCopy, AiFillCopy} from "react-icons/ai";
 import TransactionItem from "@/component/transactionItem/TransactionItem";
+import TopMenu from "@/component/topMenu/TopMenu";
 import styles from "./page.module.scss";
 
 function Page() {
@@ -41,6 +42,8 @@ function Page() {
 	}
 
 	return ( 
+		<div className="layout">
+		<TopMenu />	
 		<div className="content">
 			<div className={styles.walletConfirm}>
 				<h4>Balance</h4>
@@ -101,6 +104,7 @@ function Page() {
 				<TransactionItem efect={true} />
 				<TransactionItem efect={false} />
 			</div>
+		</div>
 		</div>
 	);
 }

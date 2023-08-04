@@ -1,9 +1,10 @@
 .inputBox{
 	display: flex;
 	align-items: center;
-	margin-top: 16px;
 	border-radius: 8px;
 	position: relative;
+	height: 10vh;
+	margin-top: 14px;
 }
 
 .inputBox > .categoryBox{
@@ -34,10 +35,10 @@
 }
 
 .itemContainer{
-	margin-top: 20px;
+	margin-top: 10px;
 	display: flex;
 	flex-direction: column;
-	height: 490px;
+	height: calc(90vh - 80px);
 	overflow-y: auto;
 }
 

@@ -14,10 +14,10 @@ function SearchItem({id} : {id:number}) {
 	const [checked, setChecked] = useState<boolean>(false);
 	
 	return ( 
-		<div 
-			onClick={() => router.push('/product/' + id)}
-			className={styles.itemBox}>
-					<div className={styles.imageBox}>
+		<div className={styles.itemBox}>
+					<div
+						onClick={() => router.push('/product/' + id)} 
+						className={styles.imageBox}>
 						<Skeleton
 							sx={{position:"absolute", top:0, left:0}} 
 							variant="rectangular" 
@@ -35,7 +35,9 @@ function SearchItem({id} : {id:number}) {
 							}
 						</span>
 					</div>
-					<div className={styles.itemCaption}>
+					<div 
+						onClick={() => router.push('/product/' + id)}
+						className={styles.itemCaption}>
 						<p>xbox game pass 1 year </p>
 						<h4>Seller: Groovy</h4>
 					</div>

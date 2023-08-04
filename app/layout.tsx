@@ -1,4 +1,3 @@
-import TopMenu from '@/component/topMenu/TopMenu'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
@@ -15,18 +14,13 @@ export const metadata: Metadata = {
   description: 'Telegram desctop main',
 }
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({ children,}: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-				<div className='layout'>
-					<TopMenu />
-					{children}
-				</div>
+				{children}
 			</body>
     </html>
   )

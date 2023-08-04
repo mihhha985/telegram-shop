@@ -3,6 +3,7 @@ import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 import SearchItem from "@/component/searchItem/SearchItem";
+import TopMenu from "@/component/topMenu/TopMenu";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -18,8 +19,9 @@ export default function Home() {
 	}
 
   return (
+		<div className="layout">
+		<TopMenu />	
     <div className="content">
-
 			<div className={styles.inputBox}>
 				<TextField 
 					sx={{flexGrow:1}}
@@ -65,7 +67,7 @@ export default function Home() {
 				<SearchItem id={8}/>
 				<SearchItem id={9}/>
 			</div>
-
+		</div>		
 		</div>
   )
 }
