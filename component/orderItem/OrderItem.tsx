@@ -1,3 +1,5 @@
+"use client"
+import { useRouter } from 'next/navigation';
 import {Card, Grid, Box} from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import CheckIcon from '@mui/icons-material/Check';
@@ -7,9 +9,15 @@ import {typeOrderStatus} from "@/types/orderType";
 import cn from "classnames";
 import styles from "./OrderItem.module.css";
 
-function OrderItem({status, text}: {status:typeOrderStatus, text: string}) {
+function OrderItem({id, status, text}: 
+	{id:number, status:typeOrderStatus, text: string}) {
+	const router = useRouter();
+
 	return ( 
-		<Card variant="outlined" sx={{marginTop:"10px"}}>
+		<Card
+			onClick={() => router.push('/orders/' + id + '?status=' + status)} 
+			variant="outlined" 
+			sx={{marginTop:"10px"}}>
 				<Grid p={"10px"} display="flex" columnGap="10px">
 					<Box sx={{position:'relative', flex: "0 0 60px", height:"60px"}}>
 						<Skeleton
