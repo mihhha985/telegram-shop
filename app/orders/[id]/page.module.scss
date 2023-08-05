@@ -1,5 +1,8 @@
 .productContainer{
-	margin-top: 40px;
+	display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
 
 	.itemBox{
 		display: flex;
