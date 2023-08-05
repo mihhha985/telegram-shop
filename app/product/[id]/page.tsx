@@ -15,6 +15,7 @@ export default function Page({ params }: { params: { id: string } }) {
 	const [reviewsHidden, setReviewsHidden] = useState<boolean>(false);
 	console.log(params.id);
   return(
+		<div className="layout">
 			<div className={styles.productContainer}>
 				<div className={styles.itemBox}>
 					<div className={styles.imageBox}>
@@ -77,9 +78,11 @@ export default function Page({ params }: { params: { id: string } }) {
 						<ReviewsItem heandler={setReviewsHidden} />
 						<ReviewsItem heandler={setReviewsHidden} />
 						<ReviewsItem heandler={setReviewsHidden} />
-						<ReviewsItem heandler={setReviewsHidden} />					
+						<ReviewsItem heandler={setReviewsHidden} />
+
 					</div>	
 				</div>	
 			</div>
+		</div>
 	)
 }

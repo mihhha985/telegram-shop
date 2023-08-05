@@ -12,7 +12,13 @@ export default function Page() {
   return (
 		<div className='layout'>
 		<TopMenu />
-    <Stack sx={{ width: '100%', mt:"25px" }} spacing={2}>
+    <Stack sx={{ 
+			width: '100%',
+			height:"calc(100vh - 88px)",
+			overflowY:"hidden",
+			mt:"20px" 
+			}} 
+			spacing={2}>
 			<Box>
 				<Typography
 					sx={{

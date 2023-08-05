@@ -2,9 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 20px;
 	justify-content: space-between;
-	padding-top: 40px;
-	height: 240px;
+	height: 30vh;
 
 	h3{
 		color: #000;
@@ -33,7 +33,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 5px;
+		column-gap: 5px;
 		cursor: pointer;
 	}
 
@@ -92,7 +92,7 @@
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
-	height: 320px;
+	height: calc(70vh - 108px);
 	overflow-y: scroll;
 	
 	h3{

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 import SearchItem from "@/component/searchItem/SearchItem";
 import TopMenu from "@/component/topMenu/TopMenu";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
 export default function Home() {
 

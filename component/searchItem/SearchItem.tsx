@@ -14,9 +14,8 @@ function SearchItem({id} : {id:number}) {
 	const [checked, setChecked] = useState<boolean>(false);
 	
 	return ( 
-		<div className={styles.itemBox}>
-					<div
-						onClick={() => router.push('/product/' + id)} 
+				<div className={styles.itemBox}>
+					<div 
 						className={styles.imageBox}>
 						<Skeleton
 							sx={{position:"absolute", top:0, left:0}} 
@@ -69,8 +68,7 @@ function SearchItem({id} : {id:number}) {
 							</Button>
 						}
 					</div>
-				</div>
-
+				</div>				
 	);
 }
 
