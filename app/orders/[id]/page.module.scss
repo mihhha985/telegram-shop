@@ -78,17 +78,28 @@
 			flex-basis: 100px;
 			row-gap: 2px;
 			padding: 6px!important;
+			position: relative;
 
 			span{
-				font-size: 9px;
+				font-size: 8px;
 				color:#fff;
+
+				&.marker{
+					position: absolute;
+					top:-5px;
+					right: -5px;
+					width: 19px;
+					height: 14px;
+					border-radius: 5px;
+					background: #FE0808;
+				}
 			}
 		}
 	}
 
 	.reviewsBox{
 		position: relative;
-		width: 348px;
+		width: 322px;
 		height: 220px;
 		overflow-x: scroll;
 		margin-top: 5px;

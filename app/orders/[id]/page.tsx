@@ -82,6 +82,7 @@ export default function Page({ params }: { params: { id: string } }) {
 					<Button variant="contained">
 						<BsPlusCircleFill />
 						<span>Chat</span>
+						<span className={styles.marker}>2</span>
 					</Button>
 				</div>
 				<h4 style={{marginTop:"15px"}}>Reviews</h4>

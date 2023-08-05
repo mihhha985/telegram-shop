@@ -16,6 +16,7 @@ function OrderItem({id, status, text}:
 	return ( 
 		<Card
 			onClick={() => router.push('/orders/' + id + '?status=' + status)} 
+			className={styles.orderItem}
 			variant="outlined" 
 			sx={{marginTop:"10px"}}>
 				<Grid p={"10px"} display="flex" columnGap="10px">
