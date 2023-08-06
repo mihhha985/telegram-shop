@@ -4,8 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import {Skeleton } from '@mui/material';
-import {AiOutlineStar, AiTwotoneStar} from "react-icons/ai";
-import {BsPlusCircleFill, BsDashCircleFill} from "react-icons/bs";
+import {BsPlusCircleFill} from "react-icons/bs";
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
@@ -15,8 +14,8 @@ import cn from "classnames";
 import styles from "./page.module.scss";
 
 export default function Page({ params }: { params: { id: string } }) {
-	const [favorite, setFavorite] = useState<boolean>(true);
-	const [checked, setChecked] = useState<boolean>(false);
+	const [confirmed, setConfirmed] = useState<boolean>(false);
+	const [dispute, setDisput] = useState<boolean>(false);
 	const [reviewsHidden, setReviewsHidden] = useState<boolean>(false);
 	const searchParams = useSearchParams()
 	const status = searchParams.get('status');
@@ -32,16 +31,6 @@ export default function Page({ params }: { params: { id: string } }) {
 							width={121} 
 							height={155} 
 						/>
-						<span
-							onClick={() => setFavorite(prev => !prev)} 
-							className={styles.starBox}>
-							{favorite 
-								?
-								<AiOutlineStar color="#faaf00" />
-								:
-								<AiTwotoneStar color="#faaf00" />
-							}
-						</span>
 					</div>
 					<div className={styles.itemCaption}>
 						<p>&#36; 39.29</p>
@@ -71,13 +60,31 @@ export default function Page({ params }: { params: { id: string } }) {
 					<p>xbox game pass 1 year for simple country vpn change best quality ever key</p>
 				</div>
 				<div className={styles.buttonContainer}>
-					<Button variant="contained">
+					<Button 
+						variant="contained" 
+						onClick={() => {if(!confirmed) setConfirmed(true)}}
+						disabled={confirmed ? true : false}>
 						<BsPlusCircleFill />
-						<span>Confirm delivery</span>
+						<span>
+							{confirmed 
+							?
+							'Confirmed'
+							:
+							'Confirm delivery'}
+						</span>
 					</Button>
-					<Button variant="contained">
+					<Button 
+						onClick={() => setDisput(prev => !prev)}
+						variant="contained">
 						<BsPlusCircleFill />
-						<span>Open dispute</span>
+						<span>
+							{dispute
+							?
+							'Close dispute'
+							:
+							'Open dispute'
+							}
+							</span>
 					</Button>
 					<Button variant="contained">
 						<BsPlusCircleFill />
