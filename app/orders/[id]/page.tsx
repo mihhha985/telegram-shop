@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
 import {Skeleton } from '@mui/material';
@@ -17,8 +17,9 @@ export default function Page({ params }: { params: { id: string } }) {
 	const [confirmed, setConfirmed] = useState<boolean>(false);
 	const [dispute, setDisput] = useState<boolean>(false);
 	const [reviewsHidden, setReviewsHidden] = useState<boolean>(false);
-	const searchParams = useSearchParams()
+	const searchParams = useSearchParams();
 	const status = searchParams.get('status');
+	const router = useRouter();
 	console.log(status);
   return(
 		<div className="layout">
@@ -86,7 +87,9 @@ export default function Page({ params }: { params: { id: string } }) {
 							}
 							</span>
 					</Button>
-					<Button variant="contained">
+					<Button
+						onClick={() => router.push('/chat/' + params.id + '?status=' + status)} 
+						variant="contained">
 						<BsPlusCircleFill />
 						<span>Chat</span>
 						<span className={styles.marker}>2</span>
