@@ -1,5 +1,5 @@
 "use client"
-import {useState} from "react";
+import {useState, useRef, RefObject} from "react";
 import { useSearchParams } from 'next/navigation';
 import {typeOrderStatus} from "@/types/orderType";
 import CheckIcon from '@mui/icons-material/Check';
@@ -12,6 +12,7 @@ import styles from './page.module.scss';
 
 function Page({ params }: { params: { id: string } }) {
 
+	const boxRef = useRef(null) as RefObject<HTMLDivElement>;
 	const searchParams = useSearchParams();
 	const status = searchParams.get('status');
 	const [value, setValue] = useState<string>('');
@@ -53,7 +54,9 @@ function Page({ params }: { params: { id: string } }) {
 	}
 
 	return ( 
-		<div className={styles.chatContainer}>
+		<div
+			ref={boxRef} 
+			className={styles.chatContainer}>
 			<div className={styles.infoBox}>
 				<p>id: {params.id} xbox game pass 1 year </p>
 				<div className={cn(styles.orderStatus, {
@@ -87,7 +90,14 @@ function Page({ params }: { params: { id: string } }) {
 				<textarea
 					value={value} 
 					onChange={e => setValue(e.target.value)}
-					autoFocus={true}
+					onFocus={() => {
+						let ref = boxRef.current;
+						if(ref) ref.style.height = '140vh';
+					}}
+					onBlur={() => {
+						let ref = boxRef.current;
+						if(ref) ref.style.height = '100%';
+					}}
 					placeholder='Type your message...'>	
 				</textarea>
 				<button onClick={send}>
