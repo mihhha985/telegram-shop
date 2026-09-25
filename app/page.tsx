@@ -1,73 +1,56 @@
-"use client"
-import { useState } from "react";
-import TextField from '@mui/material/TextField';
-import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
+"use client";
+
+import { useMemo, useState } from "react";
+import { FiSearch, FiSliders } from "react-icons/fi";
 import SearchItem from "@/component/searchItem/SearchItem";
 import TopMenu from "@/component/topMenu/TopMenu";
+import { products } from "@/data/products";
 import styles from "./page.module.scss";
 
+const categories = ["All", "Subscription", "Adventure", "Indie collection", "Creator toolkit", "Classics"];
+
 export default function Home() {
+	const [query, setQuery] = useState("");
+	const [category, setCategory] = useState("All");
 
-	const [value, setValue] = useState<string>('');
-	const [visibleCategory, setVisibleCategory] = useState<boolean>(false);
+	const filteredProducts = useMemo(() => {
+		const normalized = query.trim().toLowerCase();
+		return products.filter((product) => {
+			const matchesCategory = category === "All" || product.category === category;
+			const matchesQuery = !normalized || [product.title, product.category, product.platform, product.shortDescription].some((value) => value.toLowerCase().includes(normalized));
+			return matchesCategory && matchesQuery;
+		});
+	}, [category, query]);
 
-	const setValueCategory = (e:any):void => {
-		console.log('click');
-		if(e.target.dataset.text){
-			setValue(e.target.dataset.text);
-		}
-	}
-
-  return (
+	return (
 		<div className="layout">
-		<TopMenu />	
-    <div className="content">
-			<div className={styles.inputBox}>
-				<TextField 
-					sx={{flexGrow:1}}
-					label="Search" 
-					variant="outlined" 
-					value={value} 
-					onChange={e => (setValue(e.target.value))}
-					placeholder="Search..."
-				/>
-				<div 
-					className={styles.control}
-					onClick={() => setVisibleCategory(prev => !prev)}
-				>
-					{visibleCategory
-						?
-						<BsDashCircle size={"24px"} color="#8d8484" />
-						:
-						<BsPlusCircle size={"24px"}  color="#8d8484" />
-					}
-				</div>
-				{visibleCategory &&
-					<div
-						onClick={e => setValueCategory(e)}
-						className={styles.categoryBox}
-					>
-						<span data-text="Playstation">Playstation</span>
-						<span data-text="XBox">XBox</span>
-						<span data-text="Windows">Windows</span>
-						<span data-text="Linux">Linux</span>
-						<span data-text="MacOs">MacOs</span>
-					</div>
-				}
-			</div>
+			<TopMenu />
+			<main className={styles.main}>
 
-			<div className={styles.itemContainer}>
-				<SearchItem id={1}/>
-				<SearchItem id={2}/>
-				<SearchItem id={3}/>
-				<SearchItem id={4}/>
-				<SearchItem id={5}/>
-				<SearchItem id={6}/>
-				<SearchItem id={7}/>
-				<SearchItem id={8}/>
-				<SearchItem id={9}/>
-			</div>
-		</div>		
+				<section className={styles.catalog}>
+					<div className={styles.catalogHeader}>
+						<div><h2>Products</h2></div>
+						<span>{filteredProducts.length.toString().padStart(2, "0")} products</span>
+					</div>
+
+					<div className={styles.tools}>
+						<label className={styles.search}>
+							<FiSearch aria-hidden="true" />
+							<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" />
+						</label>
+						<div className={styles.categories}>
+							<FiSliders aria-hidden="true" />
+							{categories.map((item) => <button type="button" key={item} className={category === item ? styles.active : ""} onClick={() => setCategory(item)}>{item}</button>)}
+						</div>
+					</div>
+
+					{filteredProducts.length > 0 ? (
+						<div className={styles.grid}>{filteredProducts.map((product) => <SearchItem key={product.id} product={product} />)}</div>
+					) : (
+						<div className={styles.empty}><strong>Nothing found</strong><span>Try a different title or category.</span></div>
+					)}
+				</section>
+			</main>
 		</div>
-  )
+	);
 }

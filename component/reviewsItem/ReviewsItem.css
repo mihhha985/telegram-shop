@@ -21,8 +21,13 @@
 }
 
 .reviewsCard{
-	padding:10px; 
-	width:320px; 
-	height:200px; 
+	flex: 0 0 260px;
+	padding:12px;
+	width:260px;
+	height:200px;
 	overflow:hidden;
+	border-color: var(--border-color);
+	border-radius: 12px;
+	box-shadow: none;
+	font-size: 12px;
 }

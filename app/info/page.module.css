@@ -1,0 +1,15 @@
+.main { display: grid; gap: 10px; padding-top: 20px; }
+.main h1 { margin-bottom: 6px; font-size: 22px; letter-spacing: -.035em; }
+.card { display: flex; flex-direction: column; gap: 8px; padding: 14px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.label { color: var(--second-text-color); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.id { font-size: 12px; }
+.nameRow { display: flex; align-items: center; gap: 5px; font-size: 12px; }
+.nameRow > span { color: var(--second-text-color); }
+.nameRow strong { font-size: 13px; }
+.nameRow input { min-width: 0; width: 130px; padding: 3px 5px; border: 1px solid var(--border-color); border-radius: 5px; outline-color: var(--accent); }
+.nameRow button { display: grid; place-items: center; width: 24px; height: 24px; margin-left: auto; border: 0; background: transparent; color: var(--accent); font-size: 16px; }
+.card a { align-self: flex-start; color: var(--accent); font-size: 13px; font-weight: 700; }
+.rules { display: grid; gap: 10px; }
+.rules > div + div { padding-top: 10px; border-top: 1px solid var(--border-color); }
+.rules strong { font-size: 12px; }
+.rules p { margin-top: 4px; color: var(--second-text-color); font-size: 11px; line-height: 1.45; }

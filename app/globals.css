@@ -1,63 +1,37 @@
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --main-text-color: #17212b;
+  --second-text-color: #70808f;
+  --border-color: #e5eaf0;
+  --accent: #278dcc;
+  --surface: #f4f6f8;
+  --card: #fff;
 }
 
-a{
-	text-decoration:none;
-	color: rgba(9, 16, 29, 1);
+html { scroll-behavior: smooth; }
+body { min-width: 320px; min-height: 100vh; background: var(--surface); color: var(--main-text-color); }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+::selection { background: #cbeafa; }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 520px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 16px calc(86px + env(safe-area-inset-bottom));
+  background: var(--surface);
+}
+.content { width: 100%; display: flex; flex-direction: column; }
+.scroll { overflow-y: auto !important; }
+
+@media (min-width: 521px) {
+  .layout { border-inline: 1px solid var(--border-color); }
 }
 
-:root{
-	--main-text-color:rgba(9, 16, 29, 1);
-	--second-text-color:#8d8484;
-	--border-color:rgba(116, 116, 128, 0.1);
-	--text-effect:rgba(52, 199, 89, 1);
-}
-
-body{
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 360px;
-	min-height: 480px;
-}
-
-.layout{
-	background-color: #fff;
-	display: flex;
-	width: 100vw;
-	height: 100vh;
-	flex-direction: column;
-	align-items: center;
-	flex-shrink: 0;
-	padding: 16px;
-	color: rgba(9, 16, 29, 1);
-}
-
-.content{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.scroll{
-	overflow-y: scroll!important;
-}
-
-.scroll::-webkit-scrollbar {
-  width: 10px;
-}
-
-.scroll::-webkit-scrollbar-track {
-	border-radius: 8px;
-  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
-  background-color: #fcfcfc;
-}
-
-.scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(116, 116, 128, 0.2);
-	border-radius: 8px;
+@media (max-width: 359px) {
+  .layout { padding-inline: 12px; }
 }

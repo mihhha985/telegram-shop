@@ -16,7 +16,7 @@ function ReviewsItem({heandler}: {heandler: Function}) {
 			<Grid display="flex" justifyContent="space-between">
 				<div>
 					<p>Я нашла работу</p>
-					<Rating name="size-small" defaultValue={3} size="small" />
+					<Rating defaultValue={3} size="small" readOnly />
 				</div>
 				<div style={{textAlign:"right", color:"#8d8484"}}>
 					<p>4 года назад</p>

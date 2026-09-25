@@ -1,165 +1,28 @@
-.productContainer{
-	display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 40px;
-
-	.itemBox{
-		display: flex;
-		column-gap: 40px;
-	
-		.imageBox{
-			position: relative;
-			width: 121px;
-			height: 155px;
-			flex-shrink: 0;
-		
-			.starBox{
-				padding: 5px;
-				background: #fff;
-				position: absolute;
-				bottom: -10px;
-				right: -10px;
-				cursor: pointer;
-			}
-		}
-
-		.itemCaption{
-			display: flex;
-			flex-direction: column;
-			row-gap: 8px;
-		
-			 p{
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: 22px; /* 129.412% */
-				letter-spacing: -0.442px;
-				margin: 0;
-			}
-
-		 	h4{
-				font-size: 14px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: 18px; /* 128.571% */
-				letter-spacing: -0.442px;
-				color: var(--second-text-color);
-				margin: 0;
-			}
-
-			.raitingBox{
-				text-align: left;
-	
-				h6{
-					color: var(--second-text-color);
-					font-size: 12px;
-					font-weight: 400;
-				}
-			}
-		}
-	}
-
-	.descriptinBox{
-		margin-top: 15px;
-		p{
-			margin-top: 5px;
-			color: var(--second-text-color);
-		}
-	}
-
-	.buttonContainer{
-		display: flex;
-		justify-content: space-between;
-		margin-top: 15px;
-		
-		button{
-			display: inline-flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			flex-basis: 100px;
-			row-gap: 2px;
-			padding: 6px!important;
-			position: relative;
-
-			span{
-				font-size: 8px;
-				color:#fff;
-
-				&.marker{
-					position: absolute;
-					top:-5px;
-					right: -5px;
-					width: 19px;
-					height: 14px;
-					border-radius: 5px;
-					background: #FE0808;
-				}
-			}
-		}
-	}
-
-	.reviewsBox{
-		position: relative;
-		width: 322px;
-		height: 220px;
-		overflow-x: scroll;
-		margin-top: 5px;
-
-		&.hidden{
-			overflow: hidden!important;
-		}
-
-		&::-webkit-scrollbar {
-			height: 10px;
-		}
-		
-		&::-webkit-scrollbar-track {
-			border-radius: 8px;
-			-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
-			background-color: #fcfcfc;
-		}
-		
-		&::-webkit-scrollbar-thumb {
-			background-color: rgba(116, 116, 128, 0.2);
-			border-radius: 8px;
-		}
-
-		.reviewsContainer{
-			position: absolute;
-			display: flex;
-			column-gap: 20px;
-
-			.croppedText{
-				max-width: 160px;
-			}
-		}
-	}
-
-	.orderStatus{
-		display: flex;
-		align-items:center;
-		justify-content: center;
-		padding:6px;
-		border-radius:5px;
-		font-size:12px;
-	}
-	
-	.orderConfirmed{
-		background-color: rgb(237, 247, 237);
-		color: rgb(30, 70, 32);
-	}
-	.orderNotConfirmed{
-		background-color: rgb(255, 244, 229);
-		color: rgb(102, 60, 0);
-	} 
-	.orderDispute{
-		color: rgb(95, 33, 32);
-		background-color: rgb(253, 237, 237);
-	} 
-	.orderClosed{
-		color: rgb(1, 67, 97);
-		background-color: rgb(229, 246, 253);
-	}
-}
+.productContainer { display: flex; flex-direction: column; gap: 13px; width: 100%; padding-top: 20px; }
+.itemBox { display: flex; gap: 12px; padding: 10px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.imageBox { position: relative; flex: 0 0 76px; width: 76px; height: 76px; overflow: hidden; border-radius: 9px; background: #e8edf1; }
+.imageBox img { object-fit: cover; }
+.itemCaption { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 3px; }
+.itemCaption p:first-child { font-size: 15px; font-weight: 700; }
+.itemCaption p:nth-child(2) { font-size: 13px; }
+.itemCaption h4, .raitingBox h6 { color: var(--second-text-color); font-size: 10px; font-weight: 400; }
+.raitingBox { display: flex; align-items: center; gap: 5px; }
+.orderStatus { display: inline-flex; align-items: center; gap: 3px; padding: 3px 5px; border-radius: 5px; font-size: 10px; }
+.orderConfirmed { background: #eaf7ef; color: #287647; }
+.orderNotConfirmed { background: #fff3df; color: #94621c; }
+.orderDispute { background: #fcebed; color: #a64650; }
+.orderClosed { background: #eaf2f7; color: #407491; }
+.transactionBox { display: flex; flex-direction: column; gap: 5px; padding: 12px 14px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.transactionBox span { color: var(--second-text-color); font-size: 10px; }
+.transactionBox code { color: var(--main-text-color); font-size: 12px; }
+.descriptinBox { padding: 14px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.descriptinBox h4, .productContainer > h4 { font-size: 15px; }
+.descriptinBox p { margin-top: 5px; color: var(--second-text-color); font-size: 12px; line-height: 1.45; }
+.buttonContainer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.buttonContainer button { display: flex; min-width: 0; min-height: 52px; flex-direction: column; gap: 3px; padding: 6px 3px; border-radius: 9px; background: var(--accent); box-shadow: none; }
+.buttonContainer button span { font-size: 9px; line-height: 1.1; text-align: center; }
+.buttonContainer .marker { position: absolute; top: -4px; right: -4px; min-width: 16px; padding: 2px; border-radius: 5px; background: #d94b55; color: #fff; }
+.reviewsBox { width: 100%; overflow-x: auto; scrollbar-width: none; }
+.reviewsBox::-webkit-scrollbar { display: none; }
+.reviewsContainer { display: flex; gap: 9px; align-items: flex-start; }
+.hidden { overflow: hidden; }

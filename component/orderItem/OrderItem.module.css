@@ -1,28 +1,21 @@
-.orderItem:hover{
-	background: rgba(0,0,0,.02);
-}
+.orderItem { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; min-height: 98px; padding: 10px; border: 1px solid var(--border-color); border-radius: 13px !important; background: var(--card); box-shadow: none !important; cursor: pointer; }
+.orderItem:hover { border-color: #c7dbe8; }
+.imageBox { position: relative; width: 76px; height: 76px; overflow: hidden; border-radius: 9px; background: #e8edf1; }
+.imageBox img { object-fit: cover; }
+.orderContent { display: flex; min-width: 0; flex-direction: column; }
+.orderNumber { color: var(--second-text-color); font-size: 10px; }
+.orderContent p { overflow: hidden; margin: 4px 0 0; font-size: 15px; font-weight: 700; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.address { overflow: hidden; margin-top: 3px; color: var(--second-text-color); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.orderBottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 5px; margin-top: auto; }
+.orderBottom strong { font-size: 15px; white-space: nowrap; }
+.orderStatus { display: inline-flex; align-items: center; gap: 3px; max-width: 125px; overflow: hidden; padding: 3px 5px; border-radius: 5px; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.orderConfirmed { background: #eaf7ef; color: #287647; }
+.orderNotConfirmed { background: #fff3df; color: #94621c; }
+.orderDispute { background: #fcebed; color: #a64650; }
+.orderClosed { background: #eaf2f7; color: #407491; }
 
-.orderStatus{
-	display: flex;
-	align-items:center;
-  padding: 2px 6px;
-	border-radius:5px;
-	font-size:9px;
-}
-
-.orderConfirmed{
-	background-color: rgb(237, 247, 237);
-  color: rgb(30, 70, 32);
-}
-.orderNotConfirmed{
-	background-color: rgb(255, 244, 229);
-	color: rgb(102, 60, 0);
-} 
-.orderDispute{
-	color: rgb(95, 33, 32);
-	background-color: rgb(253, 237, 237);
-} 
-.orderClosed{
-	color: rgb(1, 67, 97);
-	background-color: rgb(229, 246, 253);
+@media (max-width: 359px) {
+  .orderItem { grid-template-columns: 66px minmax(0, 1fr); gap: 9px; }
+  .imageBox { width: 66px; height: 66px; }
+  .orderStatus { max-width: 102px; }
 }

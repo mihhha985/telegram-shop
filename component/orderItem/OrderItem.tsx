@@ -1,51 +1,32 @@
 "use client"
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import {Card, Grid, Box} from '@mui/material';
-import Skeleton from '@mui/material/Skeleton';
+import {Card} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
+import {getProduct} from '@/data/products';
 import {typeOrderStatus} from "@/types/orderType";
 import cn from "classnames";
 import styles from "./OrderItem.module.css";
 
-function OrderItem({id, status, text}: 
-	{id:number, status:typeOrderStatus, text: string}) {
+function OrderItem({id, status, address}: {id:number, status:typeOrderStatus, address:string}) {
 	const router = useRouter();
+	const product = getProduct(id);
 
 	return ( 
 		<Card
-			onClick={() => router.push('/orders/' + id + '?status=' + status)} 
+			onClick={() => router.push('/orders/' + id)}
 			className={styles.orderItem}
-			variant="outlined" 
-			sx={{marginTop:"10px"}}>
-				<Grid p={"10px"} display="flex" columnGap="10px">
-					<Box sx={{position:'relative', flex: "0 0 60px", height:"60px"}}>
-						<Skeleton
-							variant="rectangular" 
-							width={"100%"} 
-							height={"100%"} 
-						/>
-						<Box sx={{
-							padding:"2px 6px",
-							background:"rgba(250, 4, 4, 1)",
-							borderRadius:"50%",
-							fontSize:"12px",
-							color:"#fff",
-							position:"absolute",
-							bottom:"-3px",
-							right:"-3px"
-						}}>1</Box>
-					</Box>
-					<p>{text}</p>
-					<Grid 
-						display="flex" 
-						flexDirection="column" 
-						alignItems="center" 
-						justifyContent="center" 
-						rowGap="10px" 
-						ml="auto">
-						<span style={{fontSize:"16px", fontWeight:600}}>$39.29</span>
+			variant="outlined">
+				<div className={styles.imageBox}>
+					{product && <Image src={product.image} alt="" fill sizes="76px" />}
+				</div>
+				<div className={styles.orderContent}>
+					<span className={styles.orderNumber}>Order #{id}</span>
+					<p>{product?.title ?? "Product"}</p>
+					<span className={styles.address}>Address: {address}</span>
+					<div className={styles.orderBottom}>
 						<div className={cn(styles.orderStatus, {
 							[styles.orderConfirmed]: status === typeOrderStatus.Confirmed,
 							[styles.orderNotConfirmed]: status === typeOrderStatus['Not confirmed'],
@@ -56,10 +37,11 @@ function OrderItem({id, status, text}:
 							{status === typeOrderStatus['Not confirmed'] && <AccessTimeRoundedIcon fontSize="inherit"/>}
 							{status === typeOrderStatus.Closed && <ClearIcon fontSize="inherit"/>} 
 							{status === typeOrderStatus.Dispute && <ClearIcon fontSize="inherit"/>} 
-							<span style={{textTransform:"uppercase", whiteSpace:"nowrap" }}>{status}</span>
+							<span>{status}</span>
 						</div>
-					</Grid>
-				</Grid>
+						<strong>${(product?.price ?? 39.29).toFixed(2)}</strong>
+					</div>
+				</div>
 			</Card>
 	);
 }

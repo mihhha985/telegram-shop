@@ -1,5 +1,5 @@
 "use client";
-import {useState, useRef, RefObject} from "react";
+import {useState, useRef} from "react";
 import Button from '@mui/material/Button';
 import {FaDollarSign} from "react-icons/fa";
 import {BsCurrencyBitcoin, BsArrowUpCircleFill, BsFillPlusCircleFill} from "react-icons/bs";
@@ -14,31 +14,19 @@ function Page() {
 	const [showToolkit, setShowToolkit] = useState<boolean>(false);
 	const [confirm, setConfirm] = useState<boolean>(true);
 	const [balance, setBalance] = useState<boolean>(true);
-	const addrRef = useRef() as RefObject<HTMLParagraphElement> | null;
-	const heandleClick = () => {
-		const target = addrRef?.current as HTMLParagraphElement;
-		var rng, sel;
-    if (document.createRange) {
-      rng = document.createRange();
-      rng.selectNode(target)
-      sel = window.getSelection();
-      sel?.removeAllRanges();
-      sel?.addRange(rng);
-			try {  
-				// Теперь, когда мы выбрали текст ссылки, выполним команду копирования
-				var successful = document.execCommand('copy');  
-				var msg = successful ? 'successful' : 'unsuccessful';  
-				console.log('Copy email command was ' + msg);  
-				setIsCopy(true);
-				setShowToolkit(true)
-			} catch(err) {  
-				console.log('Oops, unable to copy'); 
-				setIsCopy(false); 
-			} 
-			
-			window.getSelection()?.removeAllRanges(); 
+	const addrRef = useRef<HTMLParagraphElement>(null);
+	const handleCopy = async () => {
+		const address = addrRef.current?.innerText.replace(/\s/g, '');
+		if (!address) return;
+
+		try {
+			await navigator.clipboard.writeText(address);
+			setIsCopy(true);
+			setShowToolkit(true);
 			setTimeout(() => setShowToolkit(false), 1200);
-    }
+		} catch {
+			setIsCopy(false);
+		}
 	}
 
 	return ( 
@@ -63,7 +51,7 @@ function Page() {
 					<p ref={addrRef}>bc1pyujgt9zhj8nsjgf5kg3d8tg673<br />0f0lh5mml7s2aeuutu4s7f39s5puyka</p>
 					{showToolkit && <div className={styles.toolkit}>copied</div>}
 				</div>
-				<h5 onClick={heandleClick}>
+				<h5 onClick={handleCopy}>
 					{isCopy 
 						?
 						<AiFillCopy />

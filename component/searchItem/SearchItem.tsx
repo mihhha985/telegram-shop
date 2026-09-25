@@ -1,74 +1,38 @@
-"use client"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Rating from '@mui/material/Rating';
-import Button from '@mui/material/Button';
-import Skeleton from '@mui/material/Skeleton';
-import {AiOutlineStar, AiTwotoneStar} from "react-icons/ai";
-import {BsPlusCircleFill, BsDashCircleFill} from "react-icons/bs";
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
+import { HiArrowUpRight } from "react-icons/hi2";
+import { Product } from "@/data/products";
+import { getFavoriteIds, toggleFavorite } from "@/data/favorites";
 import styles from "./SearchItem.module.css";
 
-function SearchItem({id} : {id:number}) {
-	const router = useRouter();
-	const [favorite, setFavorite] = useState<boolean>(true);
-	const [checked, setChecked] = useState<boolean>(false);
-	
-	return ( 
-				<div className={styles.itemBox}>
-					<div 
-						className={styles.imageBox}>
-						<Skeleton
-							sx={{position:"absolute", top:0, left:0}} 
-							variant="rectangular" 
-							width={71} 
-							height={91} 
-						/>
-						<span
-							onClick={() => setFavorite(prev => !prev)} 
-							className={styles.starBox}>
-							{favorite 
-								?
-								<AiOutlineStar color="#faaf00" />
-								:
-								<AiTwotoneStar color="#faaf00" />
-							}
-						</span>
-					</div>
-					<div 
-						onClick={() => router.push('/product/' + id)}
-						className={styles.itemCaption}>
-						<p>xbox game pass 1 year </p>
-						<h4>Seller: Groovy</h4>
-					</div>
-					<div className={styles.itemControl}>
-						<h4>&#36; 39.29</h4>
-						<div className="raiting-box">
-							<Rating name="size-small" defaultValue={3} size="small" />
-							<h6>1987 reviews</h6>
-						</div>
-						{checked
-							?
-							<Button
-								sx={{display:'inline-flex', columnGap:'2px'}}
-								onClick={() => setChecked(false)} 
-								variant="contained" 
-								color="error"
-								size="small">	
-								<BsDashCircleFill size={14} />	
-								<span style={{position:"relative", top:"1px"}}>Remove</span>
-							</Button>
-							:
-							<Button 
-								sx={{display:'inline-flex', columnGap:'2px'}}
-								onClick={() => setChecked(true)}
-								variant="contained" 
-								size="small">	
-								<BsPlusCircleFill size={14} />	
-								<span style={{position:"relative", top:"1px"}}>Add</span>
-							</Button>
-						}
-					</div>
-				</div>				
+function SearchItem({ product }: { product: Product }) {
+	const [favorite, setFavorite] = useState(false);
+	useEffect(() => setFavorite(getFavoriteIds().includes(product.id)), [product.id]);
+
+	return (
+		<article className={styles.card}>
+			<Link href={`/product/${product.id}`} className={styles.imageLink} aria-label={`View ${product.title}`}>
+				<Image src={product.image} alt={`${product.title} product artwork`} fill sizes="76px" className={styles.image} />
+				<div className={styles.imageShade} />
+				{product.badge && <span className={styles.badge}>{product.badge}</span>}
+			</Link>
+			<button type="button" className={styles.favorite} onClick={() => setFavorite(toggleFavorite(product.id))} aria-label={favorite ? "Remove from favorites" : "Add to favorites"}>
+				{favorite ? <AiFillHeart /> : <AiOutlineHeart />}
+			</button>
+			<div className={styles.content}>
+				<div className={styles.meta}><span>{product.category}</span><span>{product.platform}</span></div>
+				<Link href={`/product/${product.id}`} className={styles.titleLink}><h2>{product.title}</h2><HiArrowUpRight aria-hidden="true" /></Link>
+				<p className={styles.description}>{product.shortDescription}</p>
+				<div className={styles.footer}>
+					<div className={styles.rating}><AiFillStar aria-hidden="true" /><strong>{product.rating}</strong><span>({product.reviews.toLocaleString("en-US")})</span></div>
+					<strong className={styles.price}>${product.price.toFixed(2)}</strong>
+				</div>
+			</div>
+		</article>
 	);
 }
 

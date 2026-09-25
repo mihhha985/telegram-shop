@@ -1,108 +1,48 @@
-.productContainer{
-	display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 40px;
-
-	.itemBox{
-		display: flex;
-		column-gap: 40px;
-	
-		.imageBox{
-			position: relative;
-			width: 121px;
-			height: 155px;
-			flex-shrink: 0;
-		
-			.starBox{
-				padding: 5px;
-				background: #fff;
-				position: absolute;
-				bottom: -10px;
-				right: -10px;
-				cursor: pointer;
-			}
-		}
-
-		.itemCaption{
-			display: flex;
-			flex-direction: column;
-			row-gap: 8px;
-		
-			 p{
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: 22px; /* 129.412% */
-				letter-spacing: -0.442px;
-				margin: 0;
-			}
-
-		 	h4{
-				font-size: 14px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: 18px; /* 128.571% */
-				letter-spacing: -0.442px;
-				color: var(--second-text-color);
-				margin: 0;
-			}
-
-			.raitingBox{
-				text-align: left;
-	
-				h6{
-					color: var(--second-text-color);
-					font-size: 12px;
-					font-weight: 400;
-				}
-			}
-		}
-	}
-
-	.descriptinBox{
-		margin-top: 15px;
-		p{
-			margin-top: 5px;
-			color: var(--second-text-color);
-		}
-	}
-
-	.reviewsBox{
-		position: relative;
-		width: 322px;
-		height: 220px;
-		overflow-x: scroll;
-		margin-top: 5px;
-
-		&.hidden{
-			overflow: hidden!important;
-		}
-
-		&::-webkit-scrollbar {
-			height: 10px;
-		}
-		
-		&::-webkit-scrollbar-track {
-			border-radius: 8px;
-			-webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
-			background-color: #fcfcfc;
-		}
-		
-		&::-webkit-scrollbar-thumb {
-			background-color: rgba(116, 116, 128, 0.2);
-			border-radius: 8px;
-		}
-
-		.reviewsContainer{
-			position: absolute;
-			display: flex;
-			column-gap: 20px;
-
-			.croppedText{
-				max-width: 160px;
-			}
-		}
-	}
-
-}
+.main { width: 100%; padding: 15px 0 24px; }
+.back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 13px; color: var(--second-text-color); font-size: 12px; }
+.product { overflow: hidden; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.visual { position: relative; height: 210px; overflow: hidden; background: #e8edf1; }
+.image { object-fit: cover; }
+.visualOverlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 65%, rgba(7, 9, 15, .42)); }
+.visualLabel { position: absolute; left: 12px; bottom: 12px; padding: 5px 8px; border-radius: 6px; background: rgba(23,33,43,.7); color: #fff; font-size: 10px; }
+.details { padding: 16px; }
+.topline { display: flex; align-items: center; justify-content: space-between; color: var(--accent); font-size: 11px; font-weight: 600; }
+.topline button { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 0; background: transparent; color: var(--accent); font-size: 21px; }
+.details h1 { margin: 5px 0 0; font-size: 26px; line-height: 1.15; letter-spacing: -.035em; }
+.intro { margin: 7px 0 0; color: var(--second-text-color); font-size: 13px; line-height: 1.45; }
+.rating { display: flex; align-items: center; gap: 10px; margin-top: 10px; color: var(--second-text-color); font-size: 11px; }
+.rating span:first-child { display: inline-flex; align-items: center; gap: 4px; color: var(--main-text-color); font-weight: 700; }
+.rating svg, .stars svg { color: #f5ad34; }
+.purchase { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-color); }
+.purchase > div { display: flex; flex-direction: column; gap: 2px; }
+.purchase small { color: var(--second-text-color); font-size: 10px; }
+.purchase strong { font-size: 23px; }
+.purchase button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 40px; padding: 0 13px; border: 0; border-radius: 9px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.purchase button.added { background: #32845c; }
+.assurance { display: flex; align-items: center; gap: 9px; margin-top: 13px; padding: 10px; border-radius: 9px; background: var(--surface); }
+.assurance > svg { flex: 0 0 auto; color: var(--accent); font-size: 18px; }
+.assurance span { display: flex; flex-direction: column; gap: 2px; }
+.assurance strong { font-size: 11px; }
+.assurance small { color: var(--second-text-color); font-size: 10px; }
+.seller { margin: 13px 0 0; color: var(--second-text-color); font-size: 11px; }
+.seller strong { color: var(--main-text-color); }
+.story, .reviews { margin-top: 12px; padding: 16px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.index { display: block; margin-bottom: 5px; color: var(--accent); font-size: 10px; font-weight: 700; }
+.story h2, .sectionTitle h2 { margin: 0; font-size: 17px; line-height: 1.2; letter-spacing: -.02em; }
+.story h2 br { display: none; }
+.description > p { margin: 10px 0 0; color: var(--second-text-color); font-size: 12px; line-height: 1.55; }
+.description ul { display: grid; gap: 0; margin: 12px 0 0; padding: 0; list-style: none; }
+.description li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--border-color); font-size: 12px; }
+.description li svg { color: var(--accent); }
+.sectionTitle { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+.sectionTitle > span { color: var(--second-text-color); font-size: 11px; white-space: nowrap; }
+.reviewGrid { display: grid; gap: 9px; margin-top: 12px; }
+.reviewGrid article { padding: 12px; border: 1px solid var(--border-color); border-radius: 9px; }
+.reviewGrid article > div:first-child { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.reviewGrid article > div:first-child span { color: var(--second-text-color); font-size: 10px; }
+.stars { display: flex; gap: 2px; margin: 8px 0 5px; font-size: 12px; }
+.reviewGrid p { margin: 0; color: var(--second-text-color); font-size: 11px; line-height: 1.45; }
+.notFound { display: grid; place-content: center; min-height: 50vh; text-align: center; }
+.notFound span { color: var(--accent); font-size: 12px; }
+.notFound h1 { margin: 8px 0 15px; font-size: 24px; }
+.notFound a { color: var(--accent); }

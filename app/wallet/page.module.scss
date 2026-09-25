@@ -1,104 +1,11 @@
-.walletConfirm{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 20px;
-	justify-content: space-between;
-	height: 30vh;
-
-	h3{
-		color: #000;
-		text-align: center;
-		font-family: SF Pro Text;
-		font-size: 40px;
-		font-style: normal;
-		font-weight: 700;
-		line-height: 13px; /* 32.5% */
-		letter-spacing: 0.066px;
-		cursor: pointer;
-	}
-	
-	h4{
-		font-size: 17px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 13px; /* 76.471% */
-		letter-spacing: 0.066px;
-	}
-
-	h5{
-		font-size: 14px;
-		letter-spacing: 1px;
-		color: var(--second-text-color);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		column-gap: 5px;
-		cursor: pointer;
-	}
-
-	.addrBox{
-		position: relative;
-
-		.toolkit{
-			position: absolute;
-			background: var(--second-text-color);
-			box-shadow: 2px 2px 4px rgba(0,0,0,.1);
-			padding: 4px 8px;
-			border-radius: 6px;
-			bottom:-25px;
-			left: 50%;
-			transform: translateX(-50%);
-			color:#fff;
-			font-size: 12px;
-			z-index: 1000;
-
-			&::before{
-				content: "";
-				position: absolute;
-				top:-4px;
-				left: 50%;
-				transform: translateX(-50%) rotate(45deg);
-				background: var(--second-text-color);
-				width: 10px;
-				height: 10px;
-			}
-		}
-
-		p{
-			text-align: center;
-			width: 80%;
-		}
-	}
-}
-
-.transactionContainer::-webkit-scrollbar {
-  width: 10px;
-}
-
-.transactionContainer::-webkit-scrollbar-track {
-	border-radius: 8px;
-  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
-  background-color: #fcfcfc;
-}
-
-.transactionContainer::-webkit-scrollbar-thumb {
-  background-color: rgba(116, 116, 128, 0.2);
-	border-radius: 8px;
-}
-
-.transactionContainer{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	margin-top: 20px;
-	height: calc(70vh - 108px);
-	overflow-y: scroll;
-	
-	h3{
-		font-size: 14px;
-		font-weight: 400;
-		color: var(--second-text-color);
-		text-transform: uppercase;
-	}
-}
+.walletConfirm { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 20px; padding: 20px 16px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); text-align: center; }
+.walletConfirm h4 { color: var(--second-text-color); font-size: 12px; font-weight: 500; }
+.walletConfirm h3 { font-size: 31px; line-height: 1; cursor: pointer; }
+.walletConfirm h3 svg { color: var(--accent); }
+.walletConfirm h5 { display: flex; align-items: center; gap: 5px; color: var(--accent); font-size: 12px; font-weight: 600; cursor: pointer; }
+.walletConfirm button { min-height: 40px; border-radius: 9px; background: var(--accent); box-shadow: none; font-size: 12px; font-weight: 700; }
+.walletConfirm .addrBox { position: relative; width: 100%; }
+.walletConfirm .addrBox p { overflow-wrap: anywhere; color: var(--second-text-color); font-size: 11px; line-height: 1.4; }
+.walletConfirm .toolkit { position: absolute; bottom: -24px; left: 50%; z-index: 2; padding: 4px 8px; transform: translateX(-50%); border-radius: 5px; background: var(--main-text-color); color: #fff; font-size: 10px; }
+.transactionContainer { display: flex; flex-direction: column; margin-top: 20px; }
+.transactionContainer h3 { margin-bottom: 9px; font-size: 20px; font-weight: 700; text-transform: capitalize; }

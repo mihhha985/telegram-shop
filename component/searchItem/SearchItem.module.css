@@ -1,77 +1,25 @@
-.itemBox{
-	display: flex;
-	border-bottom: 1px solid var(--border-color);
-	padding:10px 10px 10px 0;
-	gap: 10px;
-	cursor: pointer;
-}
+.card { position: relative; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; min-height: 98px; padding: 10px; border: 1px solid var(--border-color); border-radius: 13px; background: var(--card); }
+.imageLink { position: relative; display: block; width: 76px; height: 76px; overflow: hidden; border-radius: 9px; background: #e8edf1; }
+.image { object-fit: cover; }
+.imageShade { display: none; }
+.badge { position: absolute; bottom: 4px; left: 4px; right: 4px; overflow: hidden; padding: 3px 4px; border-radius: 4px; background: rgba(23,33,43,.78); color: #fff; font-size: 9px; line-height: 1.1; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.favorite { position: absolute; top: 9px; right: 9px; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; background: transparent; color: var(--accent); font-size: 19px; }
+.content { display: flex; min-width: 0; flex-direction: column; padding-right: 25px; }
+.meta { display: flex; gap: 6px; min-width: 0; overflow: hidden; color: var(--second-text-color); font-size: 10px; line-height: 1.2; white-space: nowrap; }
+.meta span { overflow: hidden; text-overflow: ellipsis; }
+.meta span + span::before { content: '·'; margin-right: 6px; }
+.titleLink { display: block; min-width: 0; margin-top: 4px; }
+.titleLink h2 { overflow: hidden; margin: 0; font-size: 15px; font-weight: 700; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.titleLink svg { display: none; }
+.description { overflow: hidden; margin: 3px 0 0; color: var(--second-text-color); font-size: 11px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 5px; }
+.rating { display: flex; align-items: center; gap: 3px; color: var(--main-text-color); font-size: 11px; }
+.rating svg { color: #f5ad34; font-size: 13px; }
+.rating span { color: var(--second-text-color); }
+.price { font-size: 15px; white-space: nowrap; }
 
-.itemBox:hover{
-	background: rgba(0,0,0,.02);
-}
-
-.itemBox > .imageBox{
-	position: relative;
-	width: 71px;
-	height: 91px;
-	flex-shrink: 0;
-}
-
-.imageBox > .starBox{
-	padding: 5px;
-	background: #fff;
-	position: absolute;
-	bottom: -10px;
-	right: -10px;
-	cursor: pointer;
-}
-
-.itemBox > .itemCaption{
-	flex-grow: 1;
-}
-
-.itemBox > .itemCaption > p{
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 22px; /* 129.412% */
-	letter-spacing: -0.442px;
-	margin: 0;
-}
-
-.itemBox > .itemCaption > h4{
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 18px; /* 128.571% */
-	letter-spacing: -0.442px;
-	color: var(--second-text-color);
-	margin-top: 6px;
-	margin-bottom: 0;
-}
-
-.itemControl{
-	display: flex;
-	flex-direction: column;
-	row-gap:5px;
-}
-
-.itemControl > h4{
-	text-align: right;
-	font-size: 18px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 18px; /* 128.571% */
-	letter-spacing: -0.442px;
-	margin: 0;
-}
-
-.raitingBox{
-	text-align: right;
-}
-
-.raitingBox > h6{
-	color: var(--main-text-color);
-	font-size: 12px;
-	font-weight: 400;
+@media (max-width: 359px) {
+  .card { grid-template-columns: 66px minmax(0, 1fr); gap: 9px; }
+  .imageLink { width: 66px; height: 66px; }
+  .rating span { display: none; }
 }

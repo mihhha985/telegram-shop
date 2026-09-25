@@ -1,6 +1,8 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Roboto } from 'next/font/google'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
+import TelegramInit from './TelegramInit'
 
 const roboto = Roboto({
   weight: ['300','400','500','700'],
@@ -10,9 +12,14 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Telegram desctop',
-  description: 'Telegram desctop main',
-	viewport: 'width=device-width, initial-scale=1, maximum-scale=1'
+  title: 'Arcadia — Curated Digital Games',
+  description: 'A polished digital gaming marketplace concept with curated releases, instant delivery and original product artwork.'
+}
+
+export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 1
 }
 
 export default function RootLayout({ children,}: {
@@ -21,7 +28,10 @@ export default function RootLayout({ children,}: {
   return (
     <html lang="en">
       <body className={roboto.className}>
-				{children}
+				<AppRouterCacheProvider>
+					<TelegramInit />
+					{children}
+				</AppRouterCacheProvider>
 			</body>
     </html>
   )
